@@ -14,7 +14,7 @@ current_position = [x,y,z]
 
 while(True):
     current_position[random.randint(0,2)] += random.choice([-1,1])
-    mc.setBlock(current_position[0], current_position[1], current_position[2], 10)
-    time.sleep(0.01)
+    mc.setBlock(current_position[0], current_position[1], current_position[2], 12)
+    time.sleep(0.1)
 
 
