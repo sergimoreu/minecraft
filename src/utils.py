@@ -17,12 +17,12 @@ class House:
     ):
         x, y, z = mc.player.getPos()
         self.roof = roof
-        self.x = x
+        self.x = x  # relative position
         self.y = y
         self.z = z
-        self.i = i
-        self.j = j
-        self.k = k
+        self.i = i  # width
+        self.j = j  # height
+        self.k = k  # depth
         self.pos_x = pos_x
         self.pos_y = pos_y
         self.pos_z = pos_z
@@ -31,16 +31,23 @@ class House:
         # self.door = door
 
     def spawn(self):
+        # walls
         for a in range(self.i):
             for b in range(self.j):
                 for c in range(self.k):
-                    if a == 0 or c == 0 or b == 0 or a == self.i - 1 or c == self.k - 1:
+                    if (
+                        a == 0 or c == 0 or b == 0 or a == self.i - 1 or c == self.k - 1
+                    ) and (
+                        self.k // 2 != c or b == 0 or c == 0 or a == 0 or b == self.j
+                    ):
                         self.mc.setBlock(
                             self.x + a + self.pos_x,
                             self.y + b + self.pos_y,
                             self.z + c + self.pos_z,
                             self.material,
                         )
+
+        # roof
         for a in range(self.i):
             for c in range(self.k):
                 self.mc.setBlock(
@@ -170,8 +177,8 @@ class RandomForest:
             for z in range(self.size):
                 time.sleep(0.2)
                 tree_type = random.choice(["christmas", "square"])
-                trunk_height = random.randint(200, 220)
-                leaves_size = random.randint(1,2)
+                trunk_height = random.randint(3, 8)
+                leaves_size = random.randint(5, 7)
 
                 x_offset = 0
                 z_offset = 0
@@ -181,8 +188,8 @@ class RandomForest:
                 # import pdb;pdb.set_trace()
                 t = Tree(
                     self.mc,
-                    self.player_x, 
-                    self.player_y, 
+                    self.player_x,
+                    self.player_y,
                     self.player_z,
                     self.pos_x + x_offset,
                     self.pos_y,

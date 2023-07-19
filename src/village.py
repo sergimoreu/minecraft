@@ -5,8 +5,17 @@ import random
 
 mc = Minecraft.create("minecraft-server")
 
-mc.postToChat("tree...")
-time.sleep(2)
+mc.postToChat("house...")
+
+h=House(mc,
+        4,
+        5, 
+        6, 
+        0,0,0, 17, 20)
+
+h.spawn()
+
+# time.sleep(2)
 # houses=[]
 # for u in range (0, 5):
 #     for o in range (0,5):
@@ -37,18 +46,18 @@ time.sleep(2)
 
 # RANDOM FOREST
 
-player_x, player_y, player_z = mc.player.getPos()
+# player_x, player_y, player_z = mc.player.getPos()
 
-random_forest = RandomForest(
-    mc,
-    player_x, player_y, player_z,
-    0,
-    0,
-    0,
-    20,
-    17,
-    17,
-)
-mc.postToChat(f"Spawning random forest at {player_x} {player_y} {player_z}")
+# random_forest = RandomForest(
+#     mc,
+#     player_x, player_y, player_z,
+#     0,
+#     0,
+#     0,
+#     20,
+#     17,
+#     17,
+# )
+# mc.postToChat(f"Spawning random forest at {player_x} {player_y} {player_z}")
 
-random_forest.spawn()
+# random_forest.spawn()
